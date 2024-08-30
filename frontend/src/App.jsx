@@ -1,17 +1,19 @@
+// frontend/src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import WelcomePage from './pages/WelcomePage.jsx';
+import WelcomePage from './pages/WelcomePage';
 import Signup from './pages/Signup';
-import './App.css';  // Global styles
+import SignIn from './pages/SignIn';
+import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <header className="header">
-          <h1>My Application</h1>
+          <h1>My Application</h1> 
           <nav>
-            <a href="/">Home</a> | <a href="/signup">Sign Up</a>
+            <a href="/">Home</a> | <a href="/signup">Sign Up</a> | <a href="/signin">Sign In</a>
           </nav>
         </header>
 
@@ -19,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<SignIn />} />
           </Routes>
         </main>
 

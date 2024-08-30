@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState('');
@@ -7,6 +8,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState(''); 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,10 +28,20 @@ const Signup = () => {
       console.log('Response data:', response.data); // Log the response data
 
       setMessage('User registered successfully!');
+      
+      // Redirect to sign-in page after successful signup
+      setTimeout(() => {
+        navigate('/signin');
+      }, 200); // Redirect after 2 seconds
+
     } catch (error) {
       console.error('Error during registration:', error.response || error.message);
       setMessage(error.response?.data?.message || 'Error registering user.');
     }
+  };
+
+  const handleSignIn = () => {
+    navigate('/signin'); // Navigate to the sign-in page
   };
 
   return (
@@ -75,6 +87,7 @@ const Signup = () => {
         <button type="submit">Sign Up</button>
       </form>
       {message && <p>{message}</p>}
+      <button onClick={handleSignIn}>Already have an account? Sign In</button> {/* New button */}
     </div>
   );
 };

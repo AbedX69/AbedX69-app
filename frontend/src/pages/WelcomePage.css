@@ -16,7 +16,7 @@
 .circle-div {
   width: 30%;
   aspect-ratio: 1;
-  border: solid;
+  border: pink solid;
   background-color: rgb(43, 198, 226);
   border-radius: 50%;
   display: flex;

@@ -14,13 +14,15 @@ body {
   }
   
   .header {
-    background-color: #432e2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12vh;
+    background-color: #66da75;
     color: rgb(207, 68, 68);
     padding: 1rem;
     text-align: center;
-    box-shadow: 5px 15px rgba(10, 11, 6, 0.457);    
-    box-shadow: -5px 15px rgba(207, 89, 68, 0.398);
-    text-shadow: 10px 10px rgba(234, 235, 238, 0.163) ;
+    box-shadow: -5px 15px rgba(207, 89, 68, 0.45);
     
     
 
