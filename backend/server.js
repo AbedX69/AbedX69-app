@@ -3,10 +3,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
 
-// Initialize Express app
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -21,10 +20,11 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('MongoDB connected...'))
   .catch(err => console.log('MongoDB connection error:', err));
 
-// Basic route for testing
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
+// Routes
+const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
+app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
 
 // Start the server
 app.listen(port, () => {
