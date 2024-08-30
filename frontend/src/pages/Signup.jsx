@@ -5,19 +5,30 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); 
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match.');
+      return;
+    }
+
     try {
       const response = await axios.post('http://localhost:5000/api/users/register', {
         name,
         email,
         password,
       });
+
+      console.log('Response data:', response.data); // Log the response data
+
       setMessage('User registered successfully!');
     } catch (error) {
-      setMessage('Error registering user.');
+      console.error('Error during registration:', error.response || error.message);
+      setMessage(error.response?.data?.message || 'Error registering user.');
     }
   };
 
@@ -49,6 +60,15 @@ const Signup = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </div>
