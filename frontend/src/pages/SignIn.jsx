@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+// frontend/src/pages/SignIn.jsx
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../context/UserContext.jsx'; // Correct import
 
 const SignIn = () => {
+  const { login } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,12 +21,14 @@ const SignIn = () => {
       });
 
       if (response.status === 200) {
+        const { userID, name } = response.data;
+        login(name, userID); // Update the context with the user info
+
         setMessage('Sign in successful!');
-        
-        // Redirect to WelcomePage after successful sign-in
+
         setTimeout(() => {
-          navigate('/'); // Assuming '/' routes to the WelcomePage
-        }, 200); // Redirect after 200 milliseconds
+          navigate('/'); // Redirect to the WelcomePage
+        }, 200);
       }
     } catch (error) {
       console.error('Error during sign-in:', error.response || error.message);

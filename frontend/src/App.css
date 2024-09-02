@@ -13,20 +13,6 @@ body {
     min-height: 100vh;
   }
   
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 12vh;
-    background-color: #66da75;
-    color: rgb(207, 68, 68);
-    padding: 1rem;
-    text-align: center;
-    box-shadow: -5px 15px rgba(207, 89, 68, 0.45);
-    
-    
-
-  }
   
   .content {
     flex: 1;  /* Ensures the content takes up the remaining space */
@@ -34,7 +20,7 @@ body {
   }
   
   .footer {
-    background-color: #333;
+    background-color: #c94747;
     color: white;
     text-align: center;
     padding: 1rem;

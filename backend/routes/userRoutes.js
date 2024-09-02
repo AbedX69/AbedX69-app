@@ -1,6 +1,6 @@
 // backend/routes/userRoutes.js
 const express = require('express');
-const User = require('../models/User.js');
+const User = require('../models/User');
 const router = express.Router();
 
 // Register a new user
@@ -21,10 +21,12 @@ router.post('/signin', async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
-    res.status(200).json({ message: 'Signed in successfully', user });
+    // Return the userID along with the response
+    res.status(200).json({ message: 'Signed in successfully', userID: user.userID, name: user.name });
   } catch (error) {
     res.status(500).json({ message: 'There was an error processing your request. Please try again later.' });
   }
 });
+
 
 module.exports = router;
