@@ -1,3 +1,4 @@
+// backend/models/Product.js
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
@@ -10,10 +11,9 @@ const productSchema = new mongoose.Schema({
   productID: { type: Number, unique: true },
 });
 
-// Method to auto-generate a product ID
 productSchema.statics.createProduct = async function (productData) {
-  const productCount = await this.countDocuments(); // Count current products
-  productData.productID = productCount + 1; // Auto-generate product ID
+  const productCount = await this.countDocuments();
+  productData.productID = productCount + 1;
   const newProduct = new this(productData);
   return await newProduct.save();
 };

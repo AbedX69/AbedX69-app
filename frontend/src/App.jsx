@@ -5,8 +5,9 @@ import Header from './components/Header';
 import WelcomePage from './pages/WelcomePage';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
-import CreateProduct from './pages/CreateProduct'; // Import the CreateProduct page
-import { UserProvider } from './context/UserContext.jsx'; // Import UserProvider
+import CreateProduct from './pages/CreateProduct';
+import ProductPage from './pages/ProductPage'; // Import ProductPage
+import { UserProvider } from './context/UserContext.jsx';
 import './App.css';
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
               <Route path="/" element={<WelcomePage />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signin" element={<SignIn />} />
-              <Route path="/sell-product" element={<CreateProduct />} /> {/* Add the route for creating a product */}
+              <Route path="/sell-product" element={<CreateProduct />} />
+              <Route path="/ProductPage" element={<ProductPage />} /> {/* Add the ProductPage route */}
             </Routes>
           </main>
           <footer className="footer">

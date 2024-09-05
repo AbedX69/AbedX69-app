@@ -1,35 +1,42 @@
 // frontend/src/pages/WelcomePage.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './WelcomePage.css';
 
 const WelcomePage = () => {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    navigate('/ProductPage', { state: { filter: 'category', category } });
+  };
+
   return (
     <div className="welcome-container">
-      <div className="circle-div" id="Electronics">
+      <div className="circle-div" id="Electronics" onClick={() => handleCategoryClick('Electronics')}>
         <span>Electronics</span>
       </div>
-      <div className="circle-div" id="Clothing">
+      <div className="circle-div" id="Clothing" onClick={() => handleCategoryClick('Clothing')}>
         <span>Clothing</span>
       </div>
-      <div className="circle-div" id="Jewelry">
+      <div className="circle-div" id="Jewelry" onClick={() => handleCategoryClick('Jewelry')}>
         <span>Jewelry</span>
       </div>
-      <div className="circle-div" id="Sports">
+      <div className="circle-div" id="Sports" onClick={() => handleCategoryClick('Sports')}>
         <span>Sports</span>
       </div>
-      <div className="circle-div" id="Home Appliances">
+      <div className="circle-div" id="Home Appliances" onClick={() => handleCategoryClick('Home Appliances')}>
         <span>Home Appliances</span>
       </div>
-      <div className="circle-div" id="Books">
+      <div className="circle-div" id="Books" onClick={() => handleCategoryClick('Books')}>
         <span>Books</span>
       </div>
-      <div className="circle-div" id="Toys">
+      <div className="circle-div" id="Toys" onClick={() => handleCategoryClick('Toys')}>
         <span>Toys</span>
       </div>
-      <div className="circle-div" id="Beauty">
+      <div className="circle-div" id="Beauty" onClick={() => handleCategoryClick('Beauty')}>
         <span>Beauty</span>
       </div>
-      <div className="circle-div" id="Automotive">
+      <div className="circle-div" id="Automotive" onClick={() => handleCategoryClick('Automotive')}>
         <span>Automotive</span>
       </div>
     </div>

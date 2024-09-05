@@ -15,20 +15,23 @@ const Header = () => {
       navigate('/sell-product');
     }
   };  
+
   const handleMyProducts = () => {
     if (userID === 'guest') {
       navigate('/signin');
     } else {
-      navigate('/ProductPage');
+      navigate('/ProductPage', { state: { filter: 'myProducts', userID } });
     }
-  }; 
-   const handleMyOrders = () => {
+  };
+
+  const handleMyOrders = () => {
     if (userID === 'guest') {
       navigate('/signin');
     } else {
-      navigate('/ProductPage');
+      navigate('/ProductPage', { state: { filter: 'myOrders', userID } });
     }
   };
+
   const handleLogout = () => {
     logout(); // Perform the logout
     navigate('/'); // Navigate to the welcome page
@@ -49,7 +52,6 @@ const Header = () => {
         <div className="dropdown-content">
           <button onClick={handleMyProducts}>My Products</button>
           <button onClick={handleMyOrders}>My Orders</button>
-
           <button onClick={handleSellProduct}>Sell a Product</button>
           <button onClick={handleLogout}>Logout</button>
         </div>

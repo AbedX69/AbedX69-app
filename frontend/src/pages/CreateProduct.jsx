@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx";
 import "./CreateProduct.css";
+import { useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
   const { userID } = useContext(UserContext);
@@ -11,6 +12,7 @@ const CreateProduct = () => {
   const [category, setCategory] = useState("");
   const [images, setImages] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     setImages([...e.target.files]);
@@ -53,6 +55,11 @@ const CreateProduct = () => {
         setPrice("");
         setCategory("");
         setImages([]);
+        
+        setTimeout(() => {
+          navigate('/'); // Redirect to the WelcomePage
+        }, 350);
+        
       }
     } catch (error) {
       console.error("Error creating product:", error.response || error.message);

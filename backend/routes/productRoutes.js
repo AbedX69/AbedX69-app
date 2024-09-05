@@ -1,40 +1,43 @@
 const express = require('express');
-const multer = require('multer');
 const Product = require('../models/Product');
+const User = require('../models/User'); // Assuming you have a User model
 const router = express.Router();
 
-// Multer setup for image upload
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Directory to store uploaded images
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Unique file name
-  },
-});
+// Get products by sellerID, category, or productIDs
+router.get('/', async (req, res) => {
+  const { sellerID, category, ids } = req.query;
 
-const upload = multer({ storage: storage });
-
-// Create product route
-// Note the change: `upload.array('images', 5)` should match the field name in your form
-router.post('/create', upload.array('images', 5), async (req, res) => {
   try {
-    const { productName, description, price, category, sellerID } = req.body;
-    const imagePaths = req.files.map(file => file.path); // Paths of uploaded images
+    let products;
 
-    const newProduct = await Product.createProduct({
-      productName,
-      description,
-      price,
-      category,
-      images: imagePaths,
-      sellerID,
-    });
+    if (sellerID) {
+      // Fetch products where the sellerID matches
+      products = await Product.find({ sellerID });
 
-    res.status(201).json(newProduct);
+      // Fetch the seller's name and add it to the product response
+      const seller = await User.findOne({ userID: sellerID });
+      if (seller) {
+        products = products.map(product => ({
+          ...product.toObject(),
+          sellerName: seller.name, // Add seller's name to each product
+        }));
+      }
+    } else if (category) {
+      // Fetch products by category
+      products = await Product.find({ category });
+    } else if (ids) {
+      // Fetch products by productIDs
+      const productIds = ids.split(',').map(id => Number(id));
+      products = await Product.find({ productID: { $in: productIds } });
+    } else {
+      // Fetch all products by default
+      products = await Product.find();
+    }
+
+    res.status(200).json(products);
   } catch (error) {
-    console.error('Error creating product:', error);
-    res.status(500).json({ message: 'Error creating product.' });
+    console.error('Error fetching products:', error);
+    res.status(500).json({ message: 'Error fetching products.' });
   }
 });
 
