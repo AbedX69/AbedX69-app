@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
     setUserID(id);
     localStorage.setItem('userName', name);
     localStorage.setItem('userID', id);
+
   };
 
   const logout = () => {
@@ -19,6 +20,7 @@ export const UserProvider = ({ children }) => {
     setUserID('guest');
     localStorage.removeItem('userName');
     localStorage.removeItem('userID');
+
   };
 
   return (

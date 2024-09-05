@@ -29,6 +29,10 @@ const Header = () => {
       navigate('/ProductPage');
     }
   };
+  const handleLogout = () => {
+    logout(); // Perform the logout
+    navigate('/'); // Navigate to the welcome page
+  };
 
   return (
     <header className="header">
@@ -47,7 +51,7 @@ const Header = () => {
           <button onClick={handleMyOrders}>My Orders</button>
 
           <button onClick={handleSellProduct}>Sell a Product</button>
-          <button onClick={logout}>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </header>
