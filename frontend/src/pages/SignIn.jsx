@@ -2,7 +2,8 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../context/UserContext.jsx'; // Correct import
+import UserContext from '../context/UserContext.jsx';
+import './Auth.css'; // Import shared CSS for Signup and SignIn
 
 const SignIn = () => {
   const { login } = useContext(UserContext);
@@ -22,25 +23,27 @@ const SignIn = () => {
 
       if (response.status === 200) {
         const { userID, name } = response.data;
-        login(name, userID); // Update the context with the user info
+        login(name, userID);
 
         setMessage('Sign in successful!');
-
         setTimeout(() => {
-          navigate('/'); // Redirect to the WelcomePage
+          navigate('/');
         }, 200);
       }
     } catch (error) {
-      console.error('Error during sign-in:', error.response || error.message);
       setMessage(error.response?.data?.message || 'Error signing in.');
     }
   };
 
+  const handleSignUp = () => {
+    navigate('/signup');
+  };
+
   return (
-    <div>
+    <div className="auth-container">
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Email</label>
           <input
             type="email"
@@ -49,7 +52,7 @@ const SignIn = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password</label>
           <input
             type="password"
@@ -58,9 +61,12 @@ const SignIn = () => {
             required
           />
         </div>
-        <button type="submit">Sign In</button>
+        <button type="submit" className="auth-btn animated-btn">Sign In</button>
+        {message && <p className="message">{message}</p>}
       </form>
-      {message && <p>{message}</p>}
+      <p className="auth-switch">
+        Don’t have an account? <button onClick={handleSignUp} className="switch-btn">Sign Up</button>
+      </p>
     </div>
   );
 };

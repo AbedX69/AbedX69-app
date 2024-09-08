@@ -5,13 +5,14 @@ const router = express.Router();
 // Register a new user
 router.post('/register', async (req, res) => {
   try {
-    const newUser = await User.createUser(req.body);
+    const newUser = await User.createUser(req.body); // Create user
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ message: 'User already exists.' });
   }
   console.log('Sign-in Request Body:', req.body);
 });
+
 
 // Sign in a user
 router.post('/signin', async (req, res) => {

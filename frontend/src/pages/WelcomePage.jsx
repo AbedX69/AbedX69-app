@@ -1,14 +1,14 @@
-// frontend/src/pages/WelcomePage.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './WelcomePage.css';
+import './WelcomePage.css'; // This is where the styling is applied
 
 const WelcomePage = () => {
   const navigate = useNavigate();
 
   const handleCategoryClick = (category) => {
-    navigate('/ProductPage', { state: { filter: 'category', category } });
+    navigate('/ProductPage', { state: { category } });
   };
+  
 
   return (
     <div className="welcome-container">

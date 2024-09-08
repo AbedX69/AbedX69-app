@@ -1,4 +1,3 @@
-// frontend/src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -22,11 +21,12 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/sell-product" element={<CreateProduct />} />
-              <Route path="/ProductPage" element={<ProductPage />} /> {/* Add the ProductPage route */}
+              <Route path="/ProductPage" element={<ProductPage />} /> {/* Fix for ProductPage route */}
             </Routes>
           </main>
           <footer className="footer">
-            <p>&copy; 2024 My Application. All rights reserved.</p>
+            <p>&copy; 2024 AbedX69. All rights reserved.</p> {/* Updated with the correct application name */}
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
           </footer>
         </div>
       </Router>

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const counterSchema = new mongoose.Schema({
-  _id: { type: String, required: true },  // The name of the sequence (e.g., 'userID')
-  seq: { type: Number, default: 1001 }     // Start the sequence from 1001
+  _id: { type: String, required: true },  // The name of the counter (e.g., 'userID' or 'productID')
+  seq: { type: Number, default: 1001 }    // The starting value for the sequence
 });
 
 module.exports = mongoose.model('Counter', counterSchema);

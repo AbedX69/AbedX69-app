@@ -1,3 +1,4 @@
+// frontend/src/pages/CreateProduct.jsx
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx";
@@ -5,7 +6,7 @@ import "./CreateProduct.css";
 import { useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
-  const { userID } = useContext(UserContext);
+  const { userID, userName } = useContext(UserContext); // Get userID and userName from context
   const [productName, setProductName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -30,10 +31,20 @@ const CreateProduct = () => {
     formData.append("description", description);
     formData.append("price", price);
     formData.append("category", category);
-    formData.append("sellerID", userID); // Assign seller ID
+    formData.append("sellerID", Number(userID)); // Assign seller ID
+    formData.append("sellerName", userName); // Assign seller name
 
-    // `images` must match the field name used in the Multer configuration
-    images.forEach((image, index) => {
+    console.log("Sending product data:", {
+      productName,
+      description,
+      price,
+      category,
+      sellerID: Number(userID),
+      sellerName: userName,
+    });
+
+    // Append images to the form data
+    images.forEach((image) => {
       formData.append("images", image); // Use the correct field name for multiple files
     });
 
@@ -59,7 +70,6 @@ const CreateProduct = () => {
         setTimeout(() => {
           navigate('/'); // Redirect to the WelcomePage
         }, 350);
-        
       }
     } catch (error) {
       console.error("Error creating product:", error.response || error.message);
