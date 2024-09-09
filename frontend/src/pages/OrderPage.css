@@ -1,0 +1,245 @@
+/* General Styles */
+.order-page-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0, #2193b0, #6dd5ed);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  margin: 20px auto;
+  max-width: 1200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Product Section with background image */
+.product-section {
+  width: 100%;
+  margin-bottom: 20px;
+  background-size: cover; /* Ensure the background covers the full area */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative; /* Keep content on top */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  min-height: 300px;
+  z-index: 1;
+  background-image: url(''); /* Add the dynamic product image URL here */
+}
+
+/* Overlay to make the text readable */
+.product-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Darken background for readability */
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.product-section h3,
+.product-section p {
+  position: relative;
+  z-index: 2; /* Ensure text is above the overlay */
+}
+
+.product-section .price {
+  position: relative;
+  z-index: 2;
+  font-size: 1.8rem;
+  color: #cbe600;
+  margin-top: 15px;
+}
+
+/* Credit Card Section */
+.card-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.credit-card-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.credit-card {
+  position: relative;
+  width: 260px;
+  height: 160px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.card-front,
+.card-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-chip {
+  width: 40px;
+  height: 25px;
+  background-color: #d4af37;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.card-number {
+  font-size: 0.4rem;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-number span {
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  color: #00e6ffcb;
+}
+
+.card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.expiry-date {
+  font-size: 0.9rem;
+}
+
+.card-back .magnetic-strip {
+  width: 100%;
+  height: 30px;
+  background-color: #000;
+  margin-bottom: 10px;
+}
+
+.signature-strip {
+  background-color: #000;
+  height: 20px;
+  position: relative;
+  padding: 5px;
+}
+
+.signature-strip span {
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  font-size: 0.9rem;
+  color: #d4af37;
+}
+
+/* Payment Form */
+.payment-form {
+  background-color: rgba(0, 0, 0, 0.276);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.card-number-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-number-inputs input {
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+  margin-right: 5px;
+  background-color: #333;
+  color: rgb(229, 211, 211);
+  border-radius: 4px;
+  font-size: 1.5rem;
+}
+
+.card-number-inputs input:last-child {
+  margin-right: 0;
+}
+
+.card-input-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.card-input:not(:last-child) {
+  margin-right: 10px;
+}
+
+.card-input label {
+  margin-bottom: 5px;
+}
+
+.card-input input {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.buy-now-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #ff9900, #ff6600);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.3s ease;
+  background-size: 200% 200%;
+  background-position: left;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+}
+
+.buy-now-btn:hover {
+  background-position: right;
+  transform: scale(1.02);
+}
+
+.buy-now-btn:active {
+  transform: scale(0.98);
+}

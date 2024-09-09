@@ -1,18 +1,17 @@
+// backend/models/Order.js
 const mongoose = require('mongoose');
 
+// Define the schema for an Order
 const orderSchema = new mongoose.Schema({
-  orderID: { type: String, required: true, unique: true },
-  sellerID: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to Seller (User)
-  buyerID: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to Buyer (User)
-  productID: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true }, // Reference to Product
-  paymentInfo: {
-    address: { type: String, required: true },
-    creditCardInfo: { 
-      cardNumber: { type: String, required: true },
-      expirationDate: { type: String, required: true },
-      cvv: { type: String, required: true }
-    }
-  }
+  buyerID: { type: Number, required: true }, // Reference to the user who made the purchase
+  productID: { type: Number, required: true }, // Reference to the product being ordered
+  cardNumber: { type: String, required: true }, // Placeholder; sensitive data should not be stored like this in production
+  expiryDate: { type: String, required: true }, // Expiry date of the credit card
+  cvc: { type: String, required: true }, // CVC of the credit card
+  orderDate: { type: Date, default: Date.now }, // Automatically set the order date
 });
 
+// Create a method to validate the order data if needed (e.g., format of card number)
+
+// Compile and export the Order model
 module.exports = mongoose.model('Order', orderSchema);

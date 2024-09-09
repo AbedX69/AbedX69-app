@@ -1,0 +1,167 @@
+/* Main container */
+.item-page-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0, #2193b0, #6dd5ed);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite; /* Moving gradient */
+  margin: 20px auto;
+  max-width: 1200px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Image Section */
+.item-images-section {
+  flex: 1;
+  margin-right: 40px;
+}
+
+.main-image-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.main-image-container:hover {
+  transform: scale(1.05);
+}
+
+.item-main-image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Thumbnails Section */
+.item-thumbnails {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  overflow-x: auto;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.thumbnail.active {
+  border-color: #007bff;
+}
+
+.thumbnail:hover {
+  border-color: #ff9900;
+}
+
+/* Item Details */
+.item-details-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: slideIn 0.8s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.product-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.item-price {
+  font-size: 1.8rem;
+  color: #e60023;
+  margin-bottom: 15px;
+}
+
+.item-description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Buy Now Button */
+.buy-now-btn {
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #ff9900, #ff6600);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.3s ease;
+  background-size: 200% 200%;
+  background-position: left;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.buy-now-btn:hover {
+  background-position: right;
+  transform: scale(1.05);
+}
+
+.buy-now-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .item-page-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-images-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .main-image-container {
+    height: 300px;
+  }
+}
+/* Hide the text cursor */
+.item-page-container * {
+  caret-color: transparent; /* This will hide the blinking text cursor */
+}

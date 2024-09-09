@@ -5,6 +5,9 @@ import WelcomePage from './pages/WelcomePage';
 import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
 import CreateProduct from './pages/CreateProduct';
+import ItemPage from './pages/ItemPage';
+import OrderPage from './pages/OrderPage'; // Import the OrderPage component
+
 import ProductPage from './pages/ProductPage'; // Import ProductPage
 import { UserProvider } from './context/UserContext.jsx';
 import './App.css';
@@ -22,6 +25,9 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/sell-product" element={<CreateProduct />} />
               <Route path="/ProductPage" element={<ProductPage />} /> {/* Fix for ProductPage route */}
+              <Route path="/product/:productID"  element={<ItemPage />} />
+              <Route path="/order/:productID" element={<OrderPage />} /> {/* Add the OrderPage route */}
+
             </Routes>
           </main>
           <footer className="footer">

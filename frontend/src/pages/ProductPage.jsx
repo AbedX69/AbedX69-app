@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
 import axios from 'axios';
 import './ProductPage.css';
 
@@ -8,6 +8,11 @@ const ProductPage = () => {
   const { userID, category } = state || {};
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleCardClick = (product) => {
+    navigate(`/product/${product.productID}`); // Navigate to ItemPage with productID
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -41,7 +46,7 @@ const ProductPage = () => {
             <h1>No products yet</h1>
           ) : (
             products.map(product => (
-              <div key={product._id} className="product-card">
+              <div key={product._id} className="product-card" onClick={() => handleCardClick(product)}>
                 <img 
                   src={`http://localhost:5000/${product.images ? product.images[0] : 'default.jpg'}`} 
                   alt={product.productName} 
