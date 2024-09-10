@@ -9,9 +9,14 @@ import ItemPage from './pages/ItemPage';
 import OrderPage from './pages/OrderPage';
 import ProductPage from './pages/ProductPage';
 import Footer from './components/Footer';
-import FloatingShapes from './components/FloatingShapes'; // Floating shapes behind the content
+import FloatingShapes from './components/FloatingShapes'; 
 import { UserProvider } from './context/UserContext.jsx';
 import './App.css';
+
+// Import new pages from the footerstuff folder
+import AboutUs from './components/footerstuff/AboutUs';
+import ContactUs from './components/footerstuff/ContactUs';
+import FAQ from './components/footerstuff/FAQ';
 
 function App() {
   return (
@@ -19,7 +24,7 @@ function App() {
       <Router>
         <div className="App">
           <Header />
-          <FloatingShapes /> {/* Floating shapes stay behind the content */}
+          <FloatingShapes />
           <main className="content">
             <Routes>
               <Route path="/" element={<WelcomePage />} />
@@ -29,6 +34,11 @@ function App() {
               <Route path="/ProductPage" element={<ProductPage />} />
               <Route path="/product/:productID" element={<ItemPage />} />
               <Route path="/order/:productID" element={<OrderPage />} />
+
+              {/* New Routes for Footer Pages */}
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/faq" element={<FAQ />} />
             </Routes>
           </main>
           <Footer />

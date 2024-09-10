@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p>&copy; 2024 AbedX69. All rights reserved.</p>
-      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+      <a href="/about-us">About Us</a> | <a href="/contact-us">Contact Us</a> | <a href="/faq">FAQ</a>
     </footer>
   );
 };

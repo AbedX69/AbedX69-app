@@ -1,0 +1,138 @@
+/* Container with fade-in animation */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #2193b0, #6dd5ed); /* Darker gradient */
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Darker shadow */
+  color: white;
+  opacity: 0; /* Initial hidden state for animation */
+  animation: fadeIn 1.2s ease forwards; /* Fade-in effect */
+  opacity: 85%;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Contact Us Title */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fff; /* White text for better contrast */
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInMove 1s ease forwards 0.5s;
+  opacity: 85%;
+
+}
+
+@keyframes fadeInMove {
+  to {
+    opacity: 85%;
+    transform: translateY(0);
+  }
+}
+
+/* Form Styling with subtle animations */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  display: block;
+  color: #f0f0f0; /* Light label text */
+  opacity: 0;
+  animation: fadeInMove 1s ease forwards 0.7s; /* Animate label */
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent inputs */
+  color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+  animation: fadeInMove 1s ease forwards 0.9s; /* Animate input fields */
+  opacity: 85%;
+
+}
+
+input:focus,
+textarea:focus {
+  background-color: rgba(255, 255, 255, 0.3); /* Brighter on focus */
+  outline: none;
+  transform: scale(1.02); /* Slight scale-up on focus */
+  opacity: 85%;
+
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Error Handling */
+.input-error {
+  border: 2px solid #ff4d4d;
+  background-color: rgba(255, 0, 0, 0.2); /* Redder background for errors */
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  opacity: 0;
+  animation: fadeInMove 1s ease forwards 1.1s;
+}
+
+/* Success Message */
+.success-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #15ff34;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInMove 1s ease forwards 0.6s;
+}
+
+/* Animated Submit Button */
+.submit-button {
+  background-color: #ff7e5f; /* Gradient-inspired vibrant color */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeInMove 1s ease forwards 1.2s; /* Animate button */
+}
+
+.submit-button:hover {
+  background-color: #ff6a3c; /* Darker on hover */
+  transform: translateY(-3px) scale(1.05); /* Animate hover */
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  background-color: #d55832;
+}
