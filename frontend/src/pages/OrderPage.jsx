@@ -11,6 +11,7 @@ const OrderPage = () => {
   const [cardNumber, setCardNumber] = useState(['', '', '', '']);
   const [expiryDate, setExpiryDate] = useState('');
   const [cvc, setCvc] = useState('');
+  const [showPopup, setShowPopup] = useState(false); // State for the popup
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -71,8 +72,13 @@ const OrderPage = () => {
       });
 
       if (response.status === 201) {
-        alert('Order placed successfully!');
-        navigate('/');
+        setShowPopup(true); // Show the popup
+
+        // After 1.5 seconds, redirect to the welcome page
+        setTimeout(() => {
+          setShowPopup(false); // Hide the popup
+          navigate('/');
+        }, 1500);
       }
     } catch (error) {
       console.error('Error creating order:', error);
@@ -85,10 +91,10 @@ const OrderPage = () => {
   }
 
   return (
-    <div className="order-page-container"
-    >
+    <div className="order-page-container">
       <h2>Complete Your Purchase</h2>
       <div className="order-content">
+        {/* Product details */}
         <div className="product-section">
           <img
             src={`http://localhost:5000/${product.images[0]}`}
@@ -100,29 +106,8 @@ const OrderPage = () => {
           <p className="price">${product.price}</p>
         </div>
 
+        {/* Payment form */}
         <div className="card-section">
-          <div className="credit-card-container">
-            {/* Front of the card */}
-            <div className="credit-card card-front">
-              <div className="card-chip"></div>
-              <div className="card-number">
-                {cardNumber.map((part, index) => (
-                  <span key={index}>{part.padEnd(4, '•')}</span>
-                ))}
-              </div>
-              <div className="card-name">{userName || 'CARDHOLDER NAME'}</div>
-              <div className="expiry-date">{expiryDate || 'MM/YY'}</div>
-            </div>
-
-            {/* Back of the card */}
-            <div className="credit-card card-back">
-              <div className="magnetic-strip"></div>
-              <div className="signature-strip">
-                <span>{cvc || '•••'}</span>
-              </div>
-            </div>
-          </div>
-
           <form onSubmit={handleSubmit} className="payment-form">
             <div className="card-input-group">
               <label>Card Number</label>
@@ -171,6 +156,18 @@ const OrderPage = () => {
           </form>
         </div>
       </div>
+
+      {/* Popup for successful order */}
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <div className="checkmark">
+              &#10003;
+            </div>
+            <p>Purchase was successful!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
