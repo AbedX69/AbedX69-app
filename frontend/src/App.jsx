@@ -6,9 +6,10 @@ import Signup from './pages/Signup';
 import SignIn from './pages/SignIn';
 import CreateProduct from './pages/CreateProduct';
 import ItemPage from './pages/ItemPage';
-import OrderPage from './pages/OrderPage'; // Import the OrderPage component
-
-import ProductPage from './pages/ProductPage'; // Import ProductPage
+import OrderPage from './pages/OrderPage';
+import ProductPage from './pages/ProductPage';
+import Footer from './components/Footer';
+import FloatingShapes from './components/FloatingShapes'; // Floating shapes behind the content
 import { UserProvider } from './context/UserContext.jsx';
 import './App.css';
 
@@ -18,22 +19,19 @@ function App() {
       <Router>
         <div className="App">
           <Header />
+          <FloatingShapes /> {/* Floating shapes stay behind the content */}
           <main className="content">
             <Routes>
               <Route path="/" element={<WelcomePage />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/sell-product" element={<CreateProduct />} />
-              <Route path="/ProductPage" element={<ProductPage />} /> {/* Fix for ProductPage route */}
-              <Route path="/product/:productID"  element={<ItemPage />} />
-              <Route path="/order/:productID" element={<OrderPage />} /> {/* Add the OrderPage route */}
-
+              <Route path="/ProductPage" element={<ProductPage />} />
+              <Route path="/product/:productID" element={<ItemPage />} />
+              <Route path="/order/:productID" element={<OrderPage />} />
             </Routes>
           </main>
-          <footer className="footer">
-            <p>&copy; 2024 AbedX69. All rights reserved.</p> {/* Updated with the correct application name */}
-            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
-          </footer>
+          <Footer />
         </div>
       </Router>
     </UserProvider>

@@ -1,0 +1,77 @@
+.shapes-container {
+    position: fixed; /* Keep the shapes fixed to the viewport */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Ensure the shapes stay behind the content */
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Ensure shapes don't interfere with interactions */
+  }
+  
+  
+  /* Basic styles for shapes */
+  .shape {
+    position: absolute;
+    border: 3px solid; /* Border for all shapes */
+    transition: border-color 0.8s ease, transform 0.8s ease, opacity 0.8s ease; /* Smooth color, rotation, and opacity transitions */
+  }
+  
+  /* Specific styling for circles */
+  .circle {
+    border-radius: 50%; /* Make circles rounded */
+    background-color: inherit; /* Use the color as the background */
+  }
+  
+  /* Specific styling for squares (hollow) */
+  .square {
+    border-radius: 0; /* Keep square corners */
+    background-color: transparent; /* Make squares hollow */
+  }
+  
+  /* Specific styling for triangles */
+  .triangle {
+    background: none; /* No background for triangle */
+    border: none; /* No border for triangle */
+  }
+  
+  /* Opacity and Movement animation for floating */
+  @keyframes floatMove {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(80px, 50px) rotate(180deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-80px, -50px) rotate(360deg);
+      opacity: 0.6;
+    }
+  }
+  
+  .float {
+    animation-name: floatMove;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  
+  /* Spinning animation for shapes */
+  @keyframes Spinning {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .spin {
+    animation-name: Spinning;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  

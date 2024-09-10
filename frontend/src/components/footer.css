@@ -1,0 +1,52 @@
+/* Footer styles */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: relative; /* Change this to relative or remove the position */
+    bottom: 0;
+  }
+  
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #ecf0f1;
+}
+  
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+  
+footer a:hover {
+    color: #f39c12;
+}
+  
+/* Add subtle fade-in animation for footer links */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+  
+footer a {
+    animation: fadeIn 1s ease-in;
+}
+  
+/* Responsive footer */
+@media (max-width: 768px) {
+    footer p {
+      font-size: 12px;
+    }
+  
+    footer a {
+      margin: 0 8px;
+    }
+}
