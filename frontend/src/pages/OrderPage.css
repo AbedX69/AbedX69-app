@@ -83,7 +83,7 @@
 
 .credit-card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centers the card */
   margin-bottom: 20px;
   width: 100%;
 }
@@ -99,6 +99,8 @@
   color: white;
   font-family: 'Arial', sans-serif;
 }
+
+
 
 .card-front,
 .card-back {
@@ -253,10 +255,10 @@
   background-color: #28a745;
   color: white;
   border-radius: 10px;
-  padding: 80px; /* Increase the padding to double the size */
-  width: 600px; /* Double the width */
-  height: 400px; /* Double the height */
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2); /* Adjusted box shadow for larger size */
+  padding: 80px;
+  width: 600px;
+  height: 400px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -264,6 +266,7 @@
   z-index: 1000;
   animation: fadeInOut 1.5s ease-in-out;
 }
+
 
 .popup-content {
   display: flex;

@@ -72,7 +72,7 @@ const OrderPage = () => {
       });
 
       if (response.status === 201) {
-        setShowPopup(true); // Show the popup
+        setShowPopup(true); // Show the popup for success
 
         // After 1.5 seconds, redirect to the welcome page
         setTimeout(() => {
@@ -108,6 +108,28 @@ const OrderPage = () => {
 
         {/* Payment form */}
         <div className="card-section">
+          <div className="credit-card-container">
+            {/* Front of the card */}
+            <div className="credit-card card-front">
+              <div className="card-chip"></div>
+              <div className="card-number">
+                {cardNumber.map((part, index) => (
+                  <span key={index}>{part.padEnd(4, '•')}</span>
+                ))}
+              </div>
+              <div className="card-name">{userName || 'CARDHOLDER NAME'}</div>
+              <div className="expiry-date">{expiryDate || 'MM/YY'}</div>
+            </div>
+
+            {/* Back of the card */}
+            <div className="credit-card card-back">
+              <div className="magnetic-strip"></div>
+              <div className="signature-strip">
+                <span>{cvc || '•••'}</span>
+              </div>
+            </div>
+          </div>
+
           <form onSubmit={handleSubmit} className="payment-form">
             <div className="card-input-group">
               <label>Card Number</label>
