@@ -37,8 +37,7 @@
   text-align: center;
   color: #1abc9c; /* Teal color */
   transition: color 0.3s ease;
-  margin: 0 auto;
-  position: absolute; /* Position title absolutely to center it */
+  margin: 0 auto; /* Position title absolutely to center it */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1; /* Ensure it stays above the dropdowns */

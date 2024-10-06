@@ -10,7 +10,7 @@ cd ..
 
 REM Start Frontend
 cd frontend
-start cmd /k "npm run dev"
+start cmd /k "npm run dev -- --host"
 cd ..
 
 

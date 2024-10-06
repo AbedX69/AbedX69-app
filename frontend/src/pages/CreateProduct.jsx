@@ -126,16 +126,22 @@ const CreateProduct = () => {
             <option value="Automotive">Automotive</option>
           </select>
         </div>
+
         <div className="form-group">
           <label>Product Images</label>
+          <label htmlFor="file-upload" className="custom-file-upload">
+            Choose Image
+          </label>
           <input
+            id="file-upload"
             type="file"
             multiple
             onChange={handleImageChange}
             accept="image/*"
-            required
           />
         </div>
+
+
         <button type="submit">Create Product</button>
       </form>
       {message && <p className="message">{message}</p>}

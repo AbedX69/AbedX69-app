@@ -1,16 +1,17 @@
-// frontend/src/pages/Signup.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Auth.css'; // Import shared CSS for Signup and SignIn
+import UserContext from '../context/UserContext.jsx'; // Import the UserContext
+import './Auth.css';
 
 const Signup = () => {
+  const { login } = useContext(UserContext); // Use the login function from UserContext
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); 
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,18 +22,30 @@ const Signup = () => {
     }
 
     try {
+      // Register the user
       const response = await axios.post('http://localhost:5000/api/users/register', {
         name,
         email,
         password,
       });
 
-      setMessage('User registered successfully!');
-      
-      setTimeout(() => {
-        navigate('/signin');
-      }, 200);
+      if (response.status === 201) {
+        // After successful registration, automatically sign in the user
+        const signInResponse = await axios.post('http://localhost:5000/api/users/signin', {
+          email,
+          password,
+        });
 
+        if (signInResponse.status === 200) {
+          const { userID, name } = signInResponse.data;
+          login(name, userID); // Update context state with logged-in user data
+          setMessage('User registered and signed in successfully!');
+          
+          setTimeout(() => {
+            navigate('/'); // Navigate to the Welcome Page
+          }, 200);
+        }
+      }
     } catch (error) {
       setMessage(error.response?.data?.message || 'Error registering user.');
     }

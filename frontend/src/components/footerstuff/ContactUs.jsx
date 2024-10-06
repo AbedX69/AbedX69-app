@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ContactUs.css';
 
 const ContactUs = () => {
@@ -15,6 +16,7 @@ const ContactUs = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate(); // Import and initialize useNavigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,6 +60,17 @@ const ContactUs = () => {
 
     setFormData({ name: '', email: '', message: '' });
   };
+
+  // Automatically navigate to WelcomePage after 2 seconds when form is submitted
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        navigate('/');
+      }, 2000);
+
+      return () => clearTimeout(timer); // Clear timeout if the component unmounts
+    }
+  }, [isSubmitted, navigate]);
 
   return (
     <div className="contact-container">

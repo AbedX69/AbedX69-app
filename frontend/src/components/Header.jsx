@@ -15,19 +15,19 @@ const Header = () => {
     }
   };
 
-  const handleMyProducts = () => {
-    if (userID === 'guest') {
-      navigate('/signin');
-    } else {
-      navigate('/ProductPage', { state: { userID } });
-    }
-  };
-
   const handleMyOrders = () => {
     if (userID === 'guest') {
       navigate('/signin');
     } else {
-      navigate('/ProductPage', { state: {userID } });
+      navigate('/ProductPage', { state: { userID, isBuyer: true } }); // Add isBuyer: true for buyer-specific products
+    }
+  };
+  
+  const handleMyProducts = () => {
+    if (userID === 'guest') {
+      navigate('/signin');
+    } else {
+      navigate('/ProductPage', { state: { userID, isBuyer: false } }); // Specify isBuyer: false for seller products
     }
   };
 

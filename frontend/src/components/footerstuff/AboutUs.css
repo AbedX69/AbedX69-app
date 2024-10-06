@@ -7,7 +7,7 @@
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1.2s ease-in;
-    opacity: 70%;
+    opacity: 89%;
 
   }
   
@@ -118,7 +118,7 @@
   
   .values-section h2 {
     font-size: 2.5rem;
-    color: #28a745;
+    color: #1d4426;
     margin-bottom: 20px;
     opacity: 0;
     animation: fadeInMove 1s ease forwards 1.2s;

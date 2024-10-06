@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   userID: { type: Number, unique: true }, // userID is a number
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { type: String, required: true }, 
 });
 
 // Function to generate the next userID

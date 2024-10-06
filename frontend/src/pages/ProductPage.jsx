@@ -5,7 +5,7 @@ import './ProductPage.css';
 
 const ProductPage = () => {
   const { state } = useLocation();
-  const { userID, category } = state || {};
+  const { userID, category, isBuyer } = state || {};
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Initialize useNavigate
@@ -20,9 +20,14 @@ const ProductPage = () => {
         let response;
         
         // Fetch products based on userID or category
-        if (userID) {
+        if (isBuyer && userID) {
+          // Fetch products based on orders for the current buyer
+          response = await axios.get(`/api/orders/ordered-products/${userID}`);
+        } else if (userID) {
+          // Fetch products based on the seller's ID
           response = await axios.get(`/api/products?sellerID=${userID}`);
         } else if (category) {
+          // Fetch products based on the category
           response = await axios.get(`/api/products?category=${category}`);
         }
 
@@ -34,7 +39,7 @@ const ProductPage = () => {
     };
 
     fetchProducts();
-  }, [userID, category]);
+  }, [userID, category, isBuyer]);
 
   return (
     <div className="product-page">

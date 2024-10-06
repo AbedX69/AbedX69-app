@@ -115,7 +115,7 @@ textarea {
 /* Animated Submit Button */
 .submit-button {
   background-color: #ff7e5f; /* Gradient-inspired vibrant color */
-  color: white;
+  color: rgb(242, 53, 53);
   border: none;
   padding: 12px;
   border-radius: 8px;
