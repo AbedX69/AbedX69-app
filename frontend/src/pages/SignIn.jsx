@@ -1,4 +1,3 @@
-// frontend/src/pages/SignIn.jsx
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -22,12 +21,16 @@ const SignIn = () => {
       });
 
       if (response.status === 200) {
-        const { userID, name } = response.data;
-        login(name, userID);
+        const { userID, name, isAdmin } = response.data; // Extract isAdmin from response
+        login(name, userID, isAdmin); // Pass isAdmin to login
 
         setMessage('Sign in successful!');
         setTimeout(() => {
-          navigate('/');
+          if (isAdmin) {
+            navigate('/admin'); // Redirect to admin dashboard if the user is an admin
+          } else {
+            navigate('/'); // Regular users go to the welcome page
+          }
         }, 200);
       }
     } catch (error) {

@@ -7,6 +7,9 @@ import SignIn from './pages/SignIn';
 import CreateProduct from './pages/CreateProduct';
 import ItemPage from './pages/ItemPage';
 import OrderPage from './pages/OrderPage';
+import AdminDashboard from './pages/AdminDashboard.jsx';
+import ProtectedRoute from './ProtectedRoute';
+
 import ProductPage from './pages/ProductPage';
 import Footer from './components/Footer';
 import FloatingShapes from './components/FloatingShapes'; 
@@ -34,7 +37,10 @@ function App() {
               <Route path="/ProductPage" element={<ProductPage />} />
               <Route path="/product/:productID" element={<ItemPage />} />
               <Route path="/order/:productID" element={<OrderPage />} />
+              <Route element={<ProtectedRoute adminOnly={true} />}>
 
+                <Route path="/admin" element={<AdminDashboard />} />
+              </Route>
               {/* New Routes for Footer Pages */}
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
